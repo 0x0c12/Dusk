@@ -1,5 +1,6 @@
 #include "Core/Logger.h"
 #include "Core/Asserts.h"
+#include "Platform/Platform.h"
 
 // Temporary, Remove when platform layer is build
 #include <stdio.h>
@@ -24,19 +25,26 @@ void DskShutdownLogging()
 void DskLogOutput(log_level level, const char* message, ...)
 {
     const char* level_strings[6] = {"[FATAL]: ", "[ERROR]: ", "[WARN]: ", "[INFO]: ", "[DEBUG]: ", "[TRACE]: "};
-    // b8 is_error = level < 2;
+    b8 is_error = level < LOG_LEVEL_WARN;
 
-    char out_message[32000];
+    const i32 msg_len = 32000;
+    char out_message[msg_len];
     memset(out_message, 0, sizeof(out_message));
 
     va_list arg_ptr;
     va_start(arg_ptr, message);
-    vsnprintf(out_message, 32000, message, arg_ptr);
+    vsnprintf(out_message, msg_len, message, arg_ptr);
     va_end(arg_ptr);
 
-    char out_message2[32000];
+    char out_message2[msg_len];
     sprintf(out_message2, "%s%s\n", level_strings[level], out_message);
 
-    // TODO: Platform specific output
-    printf("%s", out_message2);
+    if(is_error)
+    {
+        PlatformConsoleWriteError(out_message2, level);
+    }
+    else
+    {
+        PlatformConsoleWrite(out_message2, level);
+    }
 }
