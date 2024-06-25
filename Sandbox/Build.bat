@@ -9,7 +9,7 @@ FOR /R %%f in (*.c) do (
 )
 
 REM Flags and arguments
-SET target=TestBed
+SET target=Sandbox
 SET c_flags=-g
 SET inc_flags=-Isrc -I../Engine/src
 SET lnk_flags=-L../bin/ -lEngine.lib
