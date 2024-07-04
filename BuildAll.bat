@@ -3,6 +3,8 @@ REM Building Everything
 
 ECHO "Building Everything..."
 
+mkdir bin
+
 PUSHD Engine
 CALL Build.bat
 POPD

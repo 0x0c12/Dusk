@@ -5,12 +5,12 @@
 
 int main(void)
 {
-    DSK_FATAL("Test message: %f", 6.28f);
-    DSK_ERROR("Test message: %f", 6.28f);
-    DSK_WARN("Test message: %f", 6.28f);
-    DSK_INFO("Test message: %f", 6.28f);
-    DSK_DEBUG("Test message: %f", 6.28f);
-    DSK_TRACE("Test message: %f", 6.28f);
+    DSK_FATAL("Test message: %f", 28.08f);
+    DSK_ERROR("Test message: %f", 28.08f);
+    DSK_WARN("Test message: %f", 28.08f);
+    DSK_INFO("Test message: %f", 28.08f);
+    DSK_DEBUG("Test message: %f", 28.08f);
+    DSK_TRACE("Test message: %f", 28.08f);
 
     platform_state state;
     if(PlatformStartup(&state, "Dusk Engine Test", 400, 100, 640, 480))
