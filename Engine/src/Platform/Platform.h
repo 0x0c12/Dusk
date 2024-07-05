@@ -8,7 +8,7 @@ typedef struct platform_state
 } platform_state;
 
 // Lifetime functions
-b8 DSK_API PlatformStartup(
+b8 PlatformStartup(
     platform_state* platform_state,
     const char* application_Name,
     i32 x,
@@ -16,14 +16,14 @@ b8 DSK_API PlatformStartup(
     i32 width,
     i32 height);
 
-void DSK_API PlatformShutdown(platform_state* platform_state);
+void  PlatformShutdown(platform_state* platform_state);
 
 // Message pump
-b8 DSK_API PlatformPumpMessages(platform_state* platform_state);
+b8 PlatformPumpMessages(platform_state* platform_state);
 
 // Platform specific memory functions
-void* PlatformAllocate(u64 size, b8 aligned);
-void PlatformFree(void* block, b8 aligned);
+DSK_API void* PlatformAllocate(u64 size, b8 aligned);
+DSK_API void PlatformFree(void* block, b8 aligned);
 void* PlatformZeroMemory(void* block, u64 size);
 void* PlatformCopyMemory(void* dest, const void* source, u64 size);
 void* PlatformSetMemory(void* dest, i32 value, u64 size);
