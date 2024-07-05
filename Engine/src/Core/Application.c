@@ -1,9 +1,10 @@
 #include "Application.h"
 #include "GameTypes.h"
 
-#include "Logger.h"
+#include "Core/Logger.h"
 
 #include "Platform/Platform.h"
+#include "Core/DskMemory.h"
 
 typedef struct application_state
 {

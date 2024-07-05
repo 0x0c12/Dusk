@@ -22,8 +22,8 @@ void  PlatformShutdown(platform_state* platform_state);
 b8 PlatformPumpMessages(platform_state* platform_state);
 
 // Platform specific memory functions
-DSK_API void* PlatformAllocate(u64 size, b8 aligned);
-DSK_API void PlatformFree(void* block, b8 aligned);
+void* PlatformAllocate(u64 size, b8 aligned);
+void PlatformFree(void* block, b8 aligned);
 void* PlatformZeroMemory(void* block, u64 size);
 void* PlatformCopyMemory(void* dest, const void* source, u64 size);
 void* PlatformSetMemory(void* dest, i32 value, u64 size);

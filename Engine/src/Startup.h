@@ -2,6 +2,7 @@
 
 #include "Core/Application.h"
 #include "Core/Logger.h"
+#include "Core/DskMemory.h"
 #include "GameTypes.h"
 
 extern b8 CreateGame(Game* out_game);
@@ -9,6 +10,8 @@ extern b8 CreateGame(Game* out_game);
 // EntryPoint of application
 int main(void)
 {
+    DskInitMemory();
+
     Game game_instance;
 
     if(!CreateGame(&game_instance))
@@ -25,7 +28,7 @@ int main(void)
 
     if(!ApplicationInit(&game_instance))
     {
-        DSK_FATAL("Failed to create application");
+        DSK_ERROR("Failed to create application");
         return 1;
     }
 
@@ -33,6 +36,8 @@ int main(void)
         DSK_INFO("The application failed to shutdown properly.");
         return 2;
     }
+
+    DskShutdownMemory();
 
     return 0;
 }

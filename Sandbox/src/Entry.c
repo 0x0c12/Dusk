@@ -2,8 +2,7 @@
 
 #include <Startup.h>
 
-// TODO: Remove ASAP
-#include <Platform/Platform.h>
+#include <Core/DskMemory.h>
 
 b8 CreateGame(Game* out_game)
 {
@@ -18,7 +17,7 @@ b8 CreateGame(Game* out_game)
     out_game->Render = GameRender;
     out_game->OnResize = GameOnResize;
 
-    out_game->state = PlatformAllocate(sizeof(GameState), FALSE);
+    out_game->state = DskAllocate(sizeof(GameState), MEMORY_TAG_GAME);
 
     return TRUE;
 }

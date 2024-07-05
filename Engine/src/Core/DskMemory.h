@@ -25,7 +25,13 @@ typedef enum memory_tag
     MEMORY_TAG_MAX_TAGS
 } memory_tag;
 
-void DskInitMemory();
-void DskShutdownMemory();
+DSK_API void DskInitMemory();
+DSK_API void DskShutdownMemory();
 
 DSK_API void* DskAllocate(u64 size, memory_tag tag);
+DSK_API void DskFree(void* block, u64 size, memory_tag tag);
+DSK_API void* DskZeroMemory(void* block, u64 size);
+DSK_API void* DskCopyMemory(void* dest, const void* src, u64 size);
+DSK_API void* DskSetMemory(void* dest, i32 value, u64 size);
+
+DSK_API char* GetDskMemoryUsageStr();
