@@ -13,6 +13,7 @@ struct memory_stats
     u64 tagged_allocations[MEMORY_TAG_MAX_TAGS];
 };
 
+// TODO: Temporary debug string. Test string will be removed later on
 static const char* memory_tag_strings[MEMORY_TAG_MAX_TAGS] = 
 {
     "UNKNOWN    ",
@@ -41,6 +42,7 @@ void DskInitMemory()
     PlatformZeroMemory(&stats, sizeof(stats));
 }
 
+// TODO: Add proper shutdown procedures for memory subsystem
 void DskShutdownMemory()
 {}
 
